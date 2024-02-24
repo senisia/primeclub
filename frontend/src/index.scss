@@ -1,0 +1,21 @@
+:root {
+    background: #000;
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+  
+
+
+.dddsotted-bg {
+    display: flex;
+    width: 300px;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: radial-gradient(#fff 5%, transparent 0);
+    background-size: 35px 35px;
+}

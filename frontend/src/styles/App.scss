@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.rainbow {
+  animation: rainbow 2.5s linear infinite;
+}
+
+.product-mode {
+
+  position: absolute;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  animation: moveToTop 1s ease-in-out forwards;
+}
+
+.product-image {
+  max-width: 30%;
+  min-width: 15%;
+  border-radius: 10%;
+}
+
+.green-text {
+  color: greenyellow;
+}
+
+.product-description {
+  max-width: 50%;
+  min-width: 25%;
+  color: white;
+  font-family: "Poppins";
+}
+
+.products {
+  justify-content: center;
+  align-items: center;
+  position: static;
+  opacity: 0;
+  height: 30vh;
+  width: 50%;
+  transition: opacity 1s ease-in-out;
+
+  ul {
+    list-style-type: none;
+
+    a {
+      display: flex;
+      color: cyan;
+      font-family: "Poppins";
+      text-decoration: none;
+    }
+  }
+}
+
+.products-product-mode {
+
+  display: grid;
+  opacity: 1;
+}
+
+main {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+    animation: dropText 1s forwards ease;
+    grid-template-columns: max-content;
+
+    section {
+      display: flex;
+      flex-direction: column;
+    }
+
+    button {
+        color: white;
+        background: transparent;
+        border-style: solid;
+        animation: border-rainbow 10s ease infinite;
+        border-radius: 20px;
+        margin-top: 2vh;
+        font-size: 130%;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+        &:hover {
+            color: blue;
+            transition: .2s color ease-in-out;
+        }
+    }
+
+    .primecell-text {
+        font-family: "Raleway";
+        font-size: 3rem;
+
+        .blue-text {
+            color: blue;
+            transition: color 0.5s ease-in-out;
+        }
+    }
+}
+
+
+.dotted-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 100vh;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: radial-gradient(#fff 5%, transparent 0);
+    background-size: 35px 35px;
+}
+
+@keyframes dropText {
+    0% {
+        transform: translateY(-400px);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes flyIn {
+    0% {
+        transform: translateY(-400px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes rainbow {
+    0%, 100% {
+      color: blue;
+    }
+    8% {
+      color: rgb(255, 127, 0);
+    }
+    16% {
+      color: rgb(255, 255, 0);
+    }
+    25% {
+      color: rgb(127, 255, 0);
+    }
+    33% {
+      color: rgb(0, 255, 0);
+    }
+    41% {
+      color: rgb(0, 255, 127);
+    }
+    50% {
+      color: rgb(0, 255, 255);
+    }
+    58% {
+      color: rgb(0, 127, 255);
+    }
+    66% {
+      color: rgb(0, 0, 255);
+    }
+    75% {
+      color: rgb(127, 0, 255);
+    }
+    83% {
+      color: rgb(255, 0, 255);
+    }
+    91% {
+      color: rgb(255, 0, 127);
+    }
+  }
+
+@keyframes border-rainbow {
+  0%, 100% {
+    border-color: blue;
+  }
+  8% {
+      border-color: rgb(255, 127, 0);
+    }
+    16% {
+      border-color: rgb(255, 255, 0);
+    }
+    25% {
+      border-color: rgb(127, 255, 0);
+    }
+    33% {
+      border-color: rgb(0, 255, 0);
+    }
+    41% {
+      border-color: rgb(0, 255, 127);
+    }
+    50% {
+      border-color: rgb(0, 255, 255);
+    }
+    58% {
+      border-color: rgb(0, 127, 255);
+    }
+    66% {
+      border-color: rgb(0, 0, 255);
+    }
+    75% {
+      border-color: rgb(127, 0, 255);
+    }
+    83% {
+      border-color: rgb(255, 0, 255);
+    }
+    91% {
+      border-color: rgb(255, 0, 127);
+    }
+  }
+
+
+@keyframes moveToTop {
+  0% {
+    margin-top: 0;
+  }
+
+  100% {
+    margin-top: -20vh;
+  }
+}

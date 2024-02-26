@@ -1,5 +1,5 @@
 from fastapi import FastAPI, File, UploadFile
-from fastapi.responses import StreamingResponse
+from fastapi.responses import FileResponse
 from io import BytesIO
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, Column, Integer, String, Float
@@ -52,7 +52,15 @@ async def read_products():
 @app.get("/get_file/{product_name}")
 async def get_file(product_name: str):
     db = SessionLocal()
-    product = db.query(Product).filter(Product.name == product_name).first()
+    product = await db.query(Product).filter(Product.name == product_name).first()
     db.close()
 
     return product.url
+
+
+@app.get("/products/{product_id}/image")
+async def get_product_image(product_id: int):
+    db = SessionLocal()
+    product = db.query(Product).filter(Product.id == product).first()
+    image_path = f"images/{product.id}.jpg"  # Example path construction
+    return FileResponse(path=image_path, media_type="image/jpeg")

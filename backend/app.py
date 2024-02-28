@@ -1,14 +1,13 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import FileResponse
 from io import BytesIO
-from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, Column, Integer, String, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 
 
-app = FastAPI()
+app = FastAPI(docs_url=None, redoc_url=None)
 
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./primecell.db"
@@ -27,20 +26,9 @@ class Product(Base):
 
 Base.metadata.create_all(bind=engine)
 
-origins = [
-    "http://localhost:5173",
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 
-@app.get("/get_products")
+@app.get("/get_products/")
 async def read_products():
     db = SessionLocal()
     products = db.query(Product).all()
@@ -49,7 +37,7 @@ async def read_products():
 
 
 
-@app.get("/get_file/{product_name}")
+@app.get("/get_file/{product_name}/")
 async def get_file(product_name: str):
     db = SessionLocal()
     product = await db.query(Product).filter(Product.name == product_name).first()
@@ -58,9 +46,9 @@ async def get_file(product_name: str):
     return product.url
 
 
-@app.get("/products/{product_id}/image")
+@app.get("/products/{product_id}/image/")
 async def get_product_image(product_id: int):
     db = SessionLocal()
-    product = db.query(Product).filter(Product.id == product).first()
+    product = db.query(Product).filter(Product.id == product_id).first()
     image_path = f"images/{product.id}.jpg"  # Example path construction
     return FileResponse(path=image_path, media_type="image/jpeg")

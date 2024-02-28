@@ -10,11 +10,12 @@ function App() {
 
   const [products, setProducts] = useState([]);
 
+  const apiUrl = "https://primeclub.cc/api"
+
   useEffect(() => {
-      axios.get("http://localhost:8000/get_products/")
+      axios.get(`${apiUrl}/get_products/`)
       .then(res => {
         setProducts(res.data);
-        console.log(res);
       });
   }, []);
 
@@ -36,7 +37,7 @@ function App() {
       <div className='dotted-bg'></div>
       <main className={`${isClicked ? 'product-mode' : ''}`}>
         <section>
-          <p className='primecell-text'>prime<span className={`blue-text ${isHovered ? 'rainbow' : ''} ${isClicked ? 'rainbow' : ''}`}>cell</span></p>
+          <p className='primeclub-text'>prime<span className={`blue-text ${isHovered ? 'rainbow' : ''} ${isClicked ? 'rainbow' : ''}`}>club</span></p>
           <button
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -51,7 +52,7 @@ function App() {
           <ul>
               {products.map(product => (
                 <div key={product.id}>
-                  <img src={product.url} key={product.id} className='product-image'/>
+                  <img src={`${apiUrl}/products/${product.id}/image`} key={product.id} className='product-image'/>
                   <li className="product-description" key={product.id}>{product.name} <br /> <span className='green-text'>{product.price}₺</span></li>
                   <a href="" target='_blank noopener noreferrer'>Ürüne git</a>
                 </div>

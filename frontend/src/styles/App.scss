@@ -15,8 +15,9 @@
 }
 
 .product-image {
-  max-width: 30%;
-  min-width: 15%;
+  max-width: 60%;
+  min-width: 40%;
+  width: 50%;
   border-radius: 10%;
 }
 
@@ -28,6 +29,7 @@
   max-width: 50%;
   min-width: 25%;
   color: white;
+  font-size: 80%;
   font-family: "Poppins";
 }
 
@@ -90,7 +92,7 @@ main {
         }
     }
 
-    .primecell-text {
+    .primeclub-text {
         font-family: "Raleway";
         font-size: 3rem;
 
